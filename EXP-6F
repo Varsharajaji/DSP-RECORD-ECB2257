@@ -1,0 +1,35 @@
+Ex. no: 6. F 	 
+ 
+IMPLEMENTATION OF CHEBYSHEV TYPE-2 ANALOG FILTERS 
+
+AIM:  
+ 
+To design and execute Chebyshev Type-II analog High pass filter using MATLAB.  
+ 
+SOFTWARE REQUIRED:  
+ 
+MATLAB (R2020) Software. 
+ 
+ALGORITHM  
+ 
+•	Get the passband and stopband ripples  
+•	Get the passband and stopband edge frequencies  • 	Get the sampling frequency  
+•	Calculate the order of the filter. 
+•	Find the filter coefficients  
+•	Draw the magnitude and phase responses.  
+ 
+PROGRAM: 
+ 
+clc; close all;clear all; format long 
+rp=input('enter the passband ripple...'); rs=input('enter the stopband ripple...'); wp=input('enter the passband freq...'); ws=input('enter the stopband freq...'); fs=input('enter the sampling freq...'); w1=2*wp/fs; w2=2*ws/fs; 
+[n,wn]=cheb2ord(w1,w2,rp,rs,'s'); [b,a]=cheby2(n,rs,wn,'high','s'); w=0:.01:pi; [h,om]=freqs(b,a,w); m=20*log10(abs(h)); an=angle(h); subplot(2,1,1); plot(om/pi,m); ylabel('Gain in dB --.'); xlabel('(a) Normalised frequency --.'); subplot(2,1,2); plot(om/pi,an); xlabel('(b) Normalised frequency --.'); 
+ylabel('Phase in radians --.');  
+  
+OUTPUT:  
+ 
+enter the passband ripple... 0.34  enter the stopband ripple... 34  enter the passband freq... 1400  enter the stopband freq... 1600  
+enter the sampling freq... 10000 
+
+RESULT:  
+ 
+Thus the Chebyshev Type-II analog HIGH pass filter was designed and executed using MATLAB. 
