@@ -1,0 +1,36 @@
+Ex. no: 6.E 	 
+ 
+IMPLEMENTATION OF CHEBYSHEV TYPE-1 ANALOG FILTERS 
+
+AIM:  
+ 
+To design and execute Chebyshev Type-I analog Low pass filter using MATLAB.  
+ 
+SOFTWARE REQUIRED:  
+ 
+MATLAB (R2020) Software. 
+ 
+ALGORITHM  
+ 
+•	Get the passband and stopband ripples  
+•	Get the passband and stopband edge frequencies  • 	Get the sampling frequency  
+•	Calculate the order of the filter. 
+•	Find the filter coefficients  
+•	Draw the magnitude and phase responses. 
+ 
+ 
+PROGRAM: 
+ 
+clc; close all;clear all; format long rp=input('enter the passband ripple...'); rs=input('enter the stopband ripple...'); wp=input('enter the passband freq...'); ws=input('enter the stopband freq...'); fs=input('enter the sampling freq...'); w1=2*wp/fs;w2=2*ws/fs; [n,wn]=cheb1ord(w1,w2,rp,rs,'s'); 
+[b,a]=cheby1(n,rp,wn,'s'); 
+W=0:.01:pi; 
+[h,om]=freqs(b,a,W); 
+M=20*log10(abs(h)); An=angle(h); subplot(2,1,1); plot(om/pi,M); ylabel('Gain in dB --.'); xlabel('(a) Normalised frequency --.'); subplot(2,1,2); plot(om/pi,An); xlabel('b) Normalised frequency --.'); ylabel('Phase in radians --.'); OUTPUT:  
+ 
+enter the passband ripple... 0.23  enter the stopband ripple... 47  enter the passband freq... 1300  enter the stopband freq... 1550  
+enter the sampling freq... 7800 
+ 
+  
+RESULT:  
+ 
+Thus the Chebyshev Type-I analog Low pass filter was designed and executed using MATLAB. 
