@@ -1,0 +1,35 @@
+Ex. no:7(b) 	 
+DESIGN OF INTERPOLATON PROCESS IN MULTIRATE FILTERS 
+
+ 
+AIM: 
+          To perform the upsampling process for  the given sequence. 
+ 
+SOFTWARE REQUIRED: 
+          MATLAB  (R2020)  software 
+ 
+ALGORITHM: 
+	Start the program 
+	Generate  the  input signal    
+	Enter the up sampling factor  
+	Sample the given signal to get sampled signal 
+	Perform up sampling by introducing zero’s in between the samples 
+	Plot the input signal, sampled signal & up sampled signal 
+	Stop the program  
+
+
+PROGRAM: 
+ 
+clc; clear all; close all; 
+N=input('Enter the sequence length N:'); L=input('Enter the upsampling factor L:'); f1=0.01; f2=0.2; t=0:1:N-1; 
+x=sin(2*pi*f1*t)+sin(2*pi*f2*t); x1=[zeros(1,L*N)]; t1=1:1:L*N; j=1:L:L*N; x1(j)=x; subplot(3,1,1); plot(t,x); xlabel('time-->'); ylabel('amplitude-->'); title('Input analog signal'); subplot(3,1,2); stem(t,x); xlabel('n-->'); ylabel('amplitude-->'); title('sampled signal'); subplot(3,1,3); stem(t1-1,x1); xlabel('n-->'); ylabel('amplitude==>'); 
+title('upsampled signal'); 
+ 
+OUTPUT: 
+Enter the sequence length N:10 
+Enter the upsampling factor L:3 
+ 
+
+ 
+RESULT: 
+	 	   Thus the upsampling of the given signal was performed and executed using MATLAB 
