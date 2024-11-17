@@ -1,0 +1,187 @@
+Ex. no: 8 	 
+STUDY OF ARCHITECTURE OF DIGITAL SIGNAL PROCESSOR 
+	
+AIM:  
+ 
+To study and understand the architecture of DSP processor.  
+ 
+ARCHITECTURE: 
+Texas Instruments TMS320 is a blanket name for a series of digital signal processors (DSPs) from Texas Instruments. It was introduced on April 8, 1983 through the TMS32010 processor, which was then the fastest DSP on the market. 
+The processor is available in many different variants, some with fixed-point arithmetic and some with floating point arithmetic. The floating point DSP TMS320C3x, which exploits delayed branch logic, has as many as three delay slots. 
+The flexibility of this line of processors has led to it being used not merely as a co-processor for digital signal processing but also as a main CPU. Newer implementations support standard IEEE JTAG control for boundary scan and/or in-circuit debugging. 
+The original TMS32010 and its subsequent variants is an example of a CPU with a modified Harvard architecture, which features separate address spaces for instruction and data memory but the ability to read data values from instruction memory. The TMS32010 featured a fast multiply-and-accumulate useful in both DSP applications as well as transformations used in computer graphics. The graphics controller card for the Apollo Computer DN570 Workstation, released in 1985, was based on the TMS32010 and could transform 20,000 2D vectors every second. 
+The 'C5x uses an advanced, modified Harvard-type architecture based on the 'C25 architecture and maximizes processing power with separate buses for program memory and data memory. The instruction set supports data transfers between the two memory spaces.  
+The functional block diagram of TMS320C5x is shown in below figure. It can be divided into four subblocks they are bus structure, on-chip memory and central processing unit (CPU) and on-chip peripherals. 
+ 
+BUS  STRUCTURE: 
+ 
+Separate program and data buses allow simultaneous access to program instructions and data, providing a high degree of parallelism. For example, while data is multiplied, a previous product can be loaded into, added to, or subtracted from the accumulator and, at the same time, a new address can be generated. Such parallelism supports a powerful set of arithmetic, logic, and bit-manipulation operations that can all be performed in a single machine cycle. In addition, the 'C5x includes the control mechanisms to manage interrupts, repeated operations, and function calling. 
+ 
+  
+Figure 1. The functional block diagram of TMS320C50 
+ 
+ 
+The 'C5x architecture is built around four major buses: 
+ 
+i.	Program bus (PB)  
+ 
+ii.	Program address bus (PAB)  
+ 
+iii.	Data read bus (DB)  
+ 
+iv.	Data read address bus (DAB)  
+ 
+The PAB provides addresses to program memory space for both reads and writes. The PB also carries the instruction code and immediate operands from program memory space to the CPU. The DB interconnects various elements of the CPU to data memory space. The program and data buses can work together to transfer data from on-chip data memory and internal or external program memory to the multiplier for single-cycle multiply/accumulate operations. 
+ 
+CENTRAL PROCESSING UNIT (CPU): 
+ 
+The 'C5x CPU consists of these elements: 
+ 
+i.	Central arithmetic logic unit (CALU)  
+ 
+ii.	Parallel logic unit (PLU)  
+iii.	Auxiliary register arithmetic unit (ARAU)  
+ 
+iv.	Memory-mapped registers  
+ 
+v.	Program controller  
+ 
+CENTRAL ARITHMETIC LOGIC UNIT (CALU) : 
+ 
+The CPU uses the CALU to perform 2s-complement arithmetic. The CALU consists of these elements: 
+ 
+i.	16-bit   16-bit multiplier  
+ 
+ii.	32-bit arithmetic logic unit (ALU)  
+ 
+iii.	32-bit accumulator (ACC)  
+ 
+iv.	32-bit accumulator buffer (ACCB)  
+ 
+v.	Additional shifters at the outputs of both the accumulator and the product register (PREG) 
+ 
+PARALLEL LOGIC UNIT (PLU) : 
+ 
+The CPU includes an independent PLU, which operates separately from, but in parallel with, the ALU. The PLU performs Boolean operations or the bit manipulations required of high-speed controllers. The PLU can set, clear, test, or toggle bits in a status register, control register, or any data memory location. The PLU provides a direct logic operation path to data memory values without affecting the contents of the ACC or PREG. Results of a PLU function are writ-ten back to the original data memory location. 
+ 
+AUXILIARY REGISTER ARITHMETIC UNIT (ARAU) : 
+ 
+The CPU includes an unsigned 16-bit arithmetic logic unit that calculates indirect addresses by using inputs from the auxiliary registers (ARs), index register (INDX), and auxiliary register compare register (ARCR). The ARAU can auto index the current AR while the data memory location is being addressed and can index either by 1 or by the contents of the INDX. As a result, accessing data does not require the CALU for address manipulation; therefore, the CALU is free for other operations in parallel.  
+ 
+MEMORY-MAPPED REGISTERS :  
+ 
+The 'C5x has 96 registers mapped into page 0 of the data memory space. All 'C5x DSPs have 28 CPU registers and 16 input/output (I/O) port registers but have different numbers of peripheral and reserved registers. Since the memory-mapped registers are a component of the data memory space, they can be written to and read from in the same way as any other data memory location. The memory-mapped registers are used for indirect data address pointers, temporary storage, CPU status and control, or integer arithmetic processing through the ARAU. 
+ 
+PROGRAM CONTROLLER :  
+ 
+The program controller contains logic circuitry that decodes the operational instructions, manages the CPU pipeline, stores the status of CPU operations, and decodes the conditional operations. Parallelism of architecture lets the 'C5x perform three concurrent memory operations in any given machine cycle: fetch an instruction, read an operand, and write an operand. 
+The program controller consists of these elements: 
+ 
+i.	Program counter  
+ 
+ii.	Status and control registers  
+ 
+iii.	Hardware stack  
+ 
+iv.	Address generation logic  
+ 
+v.	Instruction register  
+ 
+ON-CHIP MEMORY : 
+ 
+The 'C5x architecture contains a considerable amount of on-chip memory to aid in system performance and integration: 
+ 
+i.	Program read-only memory (ROM)  
+ 
+ii.	Data/program dual-access RAM (DARAM)  
+ 
+iii.	Data/program single-access RAM (SARAM)  
+ 
+The 'C5x has a total address range of 224K words 16 bits. The memory space is divided into four individually selectable memory segments: 64K-word program memory space, 64K-word local data memory space, 64K-word input/ output ports, and 32K-word global data memory space. 
+ 
+PROGRAM ROM : 
+ 
+All 'C5x DSPs carry a 16-bit on-chip maskable programmable ROM. The 'C50 and 'C57S DSPs have boot loader code resident in the on-chip ROM, all other 'C5x DSPs offer the boot loader code as an option. This memory is used for booting program code from slower external ROM or EPROM to fast on-chip or external RAM. Once the custom program has been booted into RAM, the boot ROM space can be removed from pro-gram memory space by setting the MP/MC bit in the processor mode status register (PMST). The onchip ROM is selected at reset by driving the MP/MC pin low. If the on-chip ROM is not selected, the 'C5x devices start execution from off-chip memory. 
+The on-chip ROM may be configured with or without boot loader code. However, the on-chip ROM is intended for your specific program.  
+ 
+DATA/PROGRAM DUAL-ACCESS RAM :  
+ 
+All 'C5x DSPs carry a 1056-word16-bit on-chip dual-access RAM (DARAM). The DARAM is divided into three individually selectable memory blocks: 512-word data or program DARAM block B0, 512-word data DARAM block B1, and 32-word data DARAM block B2. The DARAM is primarily intended to store data values but, when needed, can be used to store programs as well. DARAM blocks B1 and B2 are always configured as data memory; however, DARAM block B0 can be configured by software as data or program memory. The DARAM can be configured in one of two ways: 
+ 
+i.	All 1056 words   16 bits configured as data memory  
+ 
+ii.	544 words 16 bits configured as data memory and 512 words.16 bits configured as program memory  DARAM improves the operational speed of the 'C5x CPU. The CPU operates with a 4-deep pipeline. In this pipeline, the CPU reads data on the third stage and writes data on the fourth stage. Hence, for a given instruction sequence, the second instruction could be reading data at the same time the first instruction is writing data. The dual data buses (DB and DAB) allow the CPU to read from and write to DARAM in the same machine cycle. 
+ 
+DATA/PROGRAM SINGLE-ACCESS RAM : 
+ 
+ 
+All 'C5x DSPs except the 'C52 carry a 16-bit on-chip single-access RAM (SARAM) of various sizes . Code can be booted from an off-chip ROM and then executed at full speed, once it is loaded into the on-chip SARAM. The SARAM can be configured by software in one of three ways: 
+ 
+i.	All SARAM configured as data memory  
+ 
+ii.	All SARAM configured as program memory  
+ 
+iii.	SARAM configured as both data memory and program memory  
+ 
+The SARAM is divided into 1K- and/or 2K-word blocks contiguous in address memory space. All 'C5x CPUs support parallel accesses to these SARAM blocks. However, one SARAM block can be accessed only once per machine cycle. In other words, the CPU can read from or write to one SARAM block while accessing another SARAM block. When the CPU requests multiple accesses, the SARAM schedules the accesses by providing a not-ready condition to the CPU and executing the multiple accesses one cycle at a time. 
+ 
+ON-CHIP MEMORY PROTECTION : 
+ 
+The 'C5x DSPs have a maskable option that protects the contents of on-chip memories. When the related bit is set, no externally originating instruction can access the on-chip memory spaces. 
+ 
+ON-CHIP PERIPHERALS : 
+ 
+All 'C5x DSPs have the same CPU structure; however, they have different on-chip peripherals connected to their CPUs. The 'C5x DSP on-chip peripherals available are: 
+a)	Clock generator  
+b)	Hardware timer  
+c)	Software-programmable wait-state generators  
+d)	Parallel I/O ports  
+e)	Host port interface (HPI)  
+f)	Serial port  
+g)	Buffered serial port (BSP)  
+h)	Time-division multiplexed (TDM) serial port  
+i)	User-maskable interrupts  
+ 
+CLOCK GENERATOR : 
+ 
+The clock generator consists of an internal oscillator and a phase-locked loop (PLL) circuit. The clock generator can be driven internally by a crystal resonator circuit or driven externally by a clock source. The PLL circuit can generate an internal CPU clock by multiplying the clock source by a specific factor, so you can use a clock source with a lower frequency than that of the CPU. 
+HARDWARE TIMER : 
+ 
+A 16-bit hardware timer with a 4-bit prescaler is available. This programmable timer clocks at a rate that is between 1/2 and 1/32 of the machine cycle rate (CLKOUT1), depending upon the timer's divide-down ratio. The timer can be stopped, restarted, reset, or disabled by specific status bits. 
+ 
+SOFTWARE-PROGRAMMABLE WAIT-STATE GENERATORS : 
+ 
+Software-programmable wait-state logic is incorporated in 'C5x DSPs allowing wait-state generation without any external hardware for interfacing with slower off-chip memory and I/O devices. This feature consists of multiple wait-state generating circuits. Each circuit is user-programmable to operate in different wait states for off-chip memory accesses. 
+ 
+PARALLEL I/O PORTS : 
+ 
+A total of 64K I/O ports are available, sixteen of these ports are memory-mapped in data memory space. Each of the I/O ports can be ad-dressed by the IN or the OUT instruction. The memory-mapped I/O ports can be accessed with any instruction that reads from or writes to data memory. The IS signal indicates a read or write operation through an I/O port. The 'C5x can easily interface with external I/O devices through the I/O ports while requiring minimal off-chip address decoding circuits. 
+ 
+HOST PORT INTERFACE (HPI) :  
+ 
+The HPI available on the 'C57S and 'LC57 is an 8-bit parallel I/O port that pro-vides an interface to a host processor. Information is exchanged between the DSP and the host processor through on-chip memory that is accessible to both the host processor and the 'C57. 
+SERIAL PORT : 
+ 
+Three different kinds of serial ports are available: a general-purpose serial port, a time-division multiplexed (TDM) serial port, and a buffered serial port (BSP). Each 'C5x contains at least one general-purpose, highspeed synchronous, full duplexed serial port interface that provides direct communication with serial devices such as codecs, serial analog-to-digital (A/D) converters, and other serial systems. The serial port is capable of operating at up to one-fourth the machine cycle rate (CLKOUT1). The serial port transmitter and receiver are double-buffered and individually controlled by maskable external interrupt signals. Data is framed either as bytes or as words. 
+ 
+BUFFERED SERIAL PORT (BSP) : 
+ 
+The BSP available on the 'C56 and a ‘C57 device is a full-duplexed, double-buffered serial port and an auto buffering unit (ABU). The BSP provides flexibility on the data stream length. The ABU supports highspeed data transfer and reduces interrupt latencies. 
+ 
+TDM SERIAL PORT : 
+ 
+The TDM serial port available on the 'C50, 'C51, and 'C53 devices are a full-duplexed serial port that can be configured by software either for synchronous operations or for time-division multiplexed operations. The TDM serial port is commonly used in multiprocessor applications 
+ 
+ 
+ 
+ 
+ 
+USER-MASKABLE INTERRUPTS:  
+ 
+Four external interrupt lines (INT1±INT4) and five internal interrupts, a timer interrupt and four serial port interrupts, are user maskable. When an interrupt service routine (ISR) is executed, the contents of the program counter are saved on an 8-level hardware stack, and the contents of eleven specific CPU registers are automatically saved (shadowed) on a 1-level-deep stack. When a return from interrupt instruction is executed, the CPU registers' contents are restored. 
+ 
+ 
+ 
+RESULT 
+ 
+Thus the architecture of TMS320C50 processor was studied.  
