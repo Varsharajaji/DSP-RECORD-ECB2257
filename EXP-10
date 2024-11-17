@@ -1,0 +1,74 @@
+Ex. no:  10 	 
+ GENERATION OF VARIOUS SIGNALS AND RANDOM NOISE 
+	
+ 
+AIM: 
+ 
+To write a program to generate various signals and random noise  using TMS320C54 processor. 
+ 
+APPARATUS   REQUIRED: 
+ 
+1.	Personal computer 
+2.	RS232C interface cable 
+3.	TMS320C5416 DSP Processor 
+ 
+PROCEDURE: 
+ 
+•	Desktop Click CCStudio(Code Composer) 3.1. 
+•	Project New Project Name 
+•	File New Source file Type the Program 
+•	File Save the program into corresponding project folder files of type .c file 
+•	Project Right click Add files to project Open the c file in corresponding folder 
+•	Project Right click Add files to project Open micro5416.cmd file in the syllabus folder • Project Rebuild all 
+•	Desktop Click Vi debugger software 
+•	Serial Port Settings Autodetect Vi dsp hardware found in Com1 ok 
+•	Tools Convert .out to .asc Open the project folder Debug open .out file ok 
+•	Serial Load Program browse file Ok 
+•	Serial Communication Window Give the input in the corresponding address 
+•	To execute the file Type GO 0000 
+•	To display the result Execute after successful download. 
+ 
+ 
+ 
+PROGRAM: 
+ 
+To  Generate  Square  Wave 
+ 
+ioport int port4; main() { int i,x; 
+while(1) { for(i=0;i<=0x5ff;i++) 
+{ x=0x0000; port4=x; } for(i=0;i<=0x5ff;i++) { x=0xfff; port4=x; } 
+} 
+} 
+ 
+ 
+ 
+To Generate  Saw Tooth Wave 
+ 
+ioport int port4; main() { int i,x; 
+while(1) { x=0x0; for(i=0;i<=0xfff;i++) { port4 = x; 
+x=x+5; 
+} 
+} 
+} 
+ 
+ 
+ 
+To  Generate  Triangle  Wave 
+ 
+ioport int port4; main() { 
+int i,x; 
+while(1) 
+{ x=0x000; 
+for(i=0;i <= 0xfff;i++) 
+{ port4 = x; 
+x=x+1; } 
+for(i=0;i <= 0xfff;i++) 
+{ port4 = x; x=x-1; 
+} 
+} 
+} 
+ 
+ 
+RESULT: 
+ 
+Thus the program for  generation of various signals and random noise was executed successfully & implemented using TMS320C5416 Processor. 
