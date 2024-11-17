@@ -1,0 +1,63 @@
+Ex. no:  9 A 	 
+ 
+ADDITION USING DIRECT ADDRESSSING MODE 	
+ 
+AIM: 
+ 
+To write an assembly language program to perform addition of two numbers using direct addressing mode. 
+ 
+APPARATUS  REQUIRED: 
+ 
+1.	Personal computer 
+2.	RS232C interface cable 
+3.	TMS320C5416 DSP Processor 
+ 
+ALGORITHM: 
+ 
+•	Set the data memory locations of Input 1, Input 2 and Output 
+•	Start the program 
+•	Initialize the data memory page. 
+•	Reset the Complier mode (CPL) bit. 
+•	Delay is given by NOP (No Operation). 
+•	The data which is in data memory (A000H) is located to Accumulate A. 
+•	The data which is in data memory (A001H) is added with Accumulator A. 
+•	Accumulator A Result is stored at A002H. 
+•	Halt the program. 
+ 
+  
+ 
+PROGRAM: 
+ 
+INP1    .SET 0H 
+INP2    .SET 1H 
+OUT     .SET 2H 
+.mmregs 
+.text 
+START: 
+LD   #140H,DP 
+RSBX   CPL 
+NOP 
+NOP 
+NOP 
+NOP 
+LD       INP1,A 
+ADD    INP2,A 
+STL      A,OUT 
+HLT:   B HLT 
+ 
+ 
+INPUT: 
+ 
+Data Memory: 
+A000h  0004 
+A001h  0004 
+ 
+OUTPUT: 
+ 
+Data Memory: 
+A002h  0008 
+ 
+ 
+RESULT: 
+ 
+Thus the Assembly language program for addition of two numbers using direct addressing mode was performed and implemented using TMS320C5416 DSP processor 
