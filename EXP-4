@@ -1,0 +1,52 @@
+Ex. No :  4 	 
+ 
+FREQUENCY ANALYSIS OF DFT 
+
+ 
+AIM: 
+To perform the   frequency analysis of   DFT for   the given sequence   using FFT. 
+  	 
+SOFTWARE  REQUIRED: 
+ 
+MATLAB (R2020) software. 
+ 
+ALGORITHM: 
+ 
+•	Start the  program 
+•	Enter the input sequences x(n) 
+•	Find the length of the input sequence 
+•	Find  FFT  of  x(n)  to get  X(K)  using the command  fft(x,n) 
+•	Find the  magnitude response and  phase   response of X(K) 
+•	Display the  output 
+•	Plot  the  input & output sequences (magnitude and phase  response) 
+•	Stop the  program 
+ 
+  
+PROGRAM: 
+ 
+clc; clear  all; x=input ('Enter the sequence :');  n=length (x); y=fft(x,n);  
+di sp('output  sequence is:');  
+disp(y); m=abs(y); disp('magnitude function is:');  disp(m); p=angle(y); disp('phase  function  is:’); disp(p); subplot(1,3,1);  t1=0 : n-1; stem(t1,x);  xlabel('n-->'); ylabel('amplitude -->');  title('input sequence'); subplot(1,3,2); t2=0 : n-1; stem (t2,m);  xlabel('n-->'); ylabel('amplitude -->'); title('magnitude plot');  subplot(1,3,3); t3=0 : n-1; stem(t3,p);  xlabel('n-->'); ylabel('phase -->');  
+title('phase  plot'); 
+ 
+
+ 
+OUTPUT: 
+ 
+Enter the sequence: [1 2 3 4]  
+ 
+output sequence is: 
+10.0000 	-2.0000 + 2.0000i            -2.0000     	-2.0000- 2.0000i 
+ 
+magnitude function is: 
+10.0000 	2.8284 	2.0000 	2.8284 
+ 
+phase function is: 
+0 	2.3562 3.1416          -2.3562 
+ 
+ 
+ 
+RESULT: 
+ 
+Thus  the  frequency analysis  of  DFT computation  using  FFT was  performed  and  executed  using 
+MATLAB. 
