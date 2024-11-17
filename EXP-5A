@@ -1,0 +1,47 @@
+Ex. No : 5. A 	 
+ 
+FIR   LOW PASS  FILTER  USING  RECTANGULAR  WINDOW 
+	
+  
+AIM: 
+ 
+To  design  a  FIR  Low pass filter  using  rectangular  window  and to plot the  frequency  response. 
+ 
+SOFTWARE  REQUIRED: 
+ 
+MATLAB (R2020)  software. 
+ 
+ALGORITHM: 
+ 
+•	Start the   program 
+•	Get the cut-off  frequency& order of the filter 
+•	For  the given specifications, find the desired impulse response hd(n) 
+•	Find the corresponding window  coefficients w(n) for the given order of the filter 
+•	Find the filter coefficients & transfer function for the given specifications 
+•	Obtain the magnitude response & phase response   
+•	Plot the magnitude response and phase response  
+•	Stop the program 
+ 
+ 
+PROGRAM: 
+ 
+ 
+clc; clear all; close all; 
+N=input('enter the order of filter'); 
+wc=(pi/2); a=(N-1)/2; for n=1:N     if((n-1)==a)         hd(n)=(wc/pi); 
+    else 
+        hd(n)=(sin(wc*(n-1-a)))/(pi*(n-1-a)); 
+    end;     w(n)=1; end; h=w.*hd; a=0:0.01:pi; b=freqz(h,1,a); mag=20*log(abs(b)); plot(a/pi,mag); grid; 
+xlabel('normalized frequency\omega^pi'); ylabel('magnitude in db'); 
+title('low pass filter'); 
+ 
+  
+ 
+OUTPUT: 
+ 
+Enter the order of filter15 
+  
+ 
+RESULT: 
+ 
+Thus the FIR low pass filter using rectangular window was designed and executed using MATLAB. 
