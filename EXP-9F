@@ -1,0 +1,45 @@
+Ex. no:  9. F 	 
+ 
+MULTIPLICATION USING DIRECT ADDRESSSING MODE 
+ 
+AIM: 
+ 
+To write an assembly language program to perform multiplication of two numbers using indirect addressing mode. 
+ 
+APPARATUS  REQUIRED: 
+ 
+1.	Personal computer 
+2.	RS232C interface cable 
+3.	TMS320C5416 DSP Processor 
+ 
+ALGORITHM: 
+ 
+•	Start the program • Clear the Accumulator A • Load the Data pointer. 
+•	Load the First and second input. 
+•	Perform the multiplication . 
+•	Store the result in Accumulator A. 
+•	Halt the program. 
+ 
+
+PROGRAM: 
+ 
+.mmregs 
+.text 
+START: 
+STM #0140H,ST0 
+STM #40H,PMST 
+STM #0A000H,AR0 
+ST #1H,*AR0 
+LD *AR0+,T 
+ST #2H,*AR0 
+MPY *AR0+,A 
+STL A,*AR0 
+HLT:    B HLT 
+.END 
+ 
+
+ 
+RESULT: 
+ 
+Thus the Assembly language program for multiplication of two numbers using indirect addressing mode was performed and implemented using TMS320C5416 DSP processor. 
+ 
