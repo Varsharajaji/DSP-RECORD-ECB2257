@@ -1,0 +1,72 @@
+Ex. no: 9. C 	 
+ 
+DIVISION USING DIRECT ADDRESSSING MODE 
+ 
+AIM: 
+ 
+To write an assembly language program to perform division of two numbers using direct addressing mode. 
+ 
+APPARATUS  REQUIRED: 
+ 
+1.	Personal computer 
+2.	RS232C interface cable 
+3.	TMS320C5416 DSP Processor 
+ 
+ALGORITHM: 
+ 
+•	Set the data memory locations of Dividend, Divisor, Quotient and Remainder. 
+•	Start the program 
+•	Initialize the data memory page. 
+•	Reset the Complier mode (CPL) bit and fractional mode (FRCT) bit. 
+•	Delay is given by NOP (No Operation). 
+•	Dividend data is loaded into Accumulator A. 
+•	Data which is in Accumulator A is divided by divisor and the result is stored in Accumulator A. 
+•	Lower 16 bit Result (Quotient) of Accumulator A is stored at A002H. 
+•	Higher 16 bit Result (Remainder) of Accumulator A is stored at A003H. 
+•	Halt the program. 
+ 
+
+ 
+ 
+PROGRAM: 
+ 
+DIVID .SET 0H 
+DIVIS .SET 1H 
+QOUT .SET 2H 
+REMAIN .SET 3H 
+.mmregs 
+.text 
+START: 
+STM #140H,ST0 
+RSBX CPL 
+RSBX FRCT 
+NOP 
+NOP 
+NOP 
+NOP 
+LD DIVID,A 
+RPT #0FH 
+SUBC DIVIS,A 
+STL A,QOUT 
+STH A,REMAIN 
+HLT:   B HLT 
+ 
+ 
+INPUT 
+ 
+DATA MEMORY 
+ 
+A000H 0009 
+A001H 0002 
+ 
+OUTPUT 
+ 
+DATA MEMORY 
+ 
+A002H 0004 
+A003H 0001 
+ 
+ 
+RESULT: 
+ 
+Thus the Assembly language program for division of two numbers using direct addressing mode was performed and implemented using TMS320C5416 DSP processor. 
