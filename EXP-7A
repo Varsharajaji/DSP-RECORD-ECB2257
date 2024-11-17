@@ -1,0 +1,53 @@
+Ex. no:7(a) 	 
+DESIGN OF DECIMATION PROCESS IN MULTIRATE FILTERS 	
+ 
+AIM: 
+          To perform the down sampling process for the given sequence. 
+ 
+SOFTWARE REQUIRED: 
+           MATLAB  (R2020) software 
+ 
+ALGORITHM: 
+•	Start the program 
+•	Generate  the  input signal    
+•	Enter the down sampling factor  
+•	Sample the given signal to get sampled signal 
+•	Perform down sampling by neglecting the samples at specified intervals 
+•	Plot the input signal, sampled signal &  down sampled signal 
+•	Stop the program  
+ 
+ 
+PROGRAM: 
+ 
+clc; 
+clear all; 
+close all; 
+N=input('Enter the sequence length N:'); 
+M=input('Enter the down sampling factor M:'); 
+f1=0.05; 
+f2=0.2; 
+t=0:1:N-1; 
+x=sin(2*pi*f1*t)+sin(2*pi*f2*t); 
+x1=x(1:M:N); t1=1:1:N/M; 
+subplot(3,1,1); plot(t,x); 
+xlabel('time-->'); 
+ylabel('amplitude-->'); 
+title('Input analog signal'); 
+subplot(3,1,2); 
+stem(t,x); 
+xlabel('n-->'); 
+ylabel('amplitude-->'); 
+title('Sampled signal'); 
+subplot(3,1,3);
+stem(t1-1,x1); 
+xlabel('n-->'); 
+ylabel('amplitude==>'); 
+title('Down sampled signal'); 
+
+ 
+OUTPUT: 
+Enter the sequence length N:30 
+Enter the down sampling factor M:2 
+ 
+RESULT: 
+ 	Thus the down sampling of the given signal was performed and executed using MATLAB 
